@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sprint Waer — Mockup</title>
+  <style>
+    :root{
+      --purple:#8a1bd6;
+      --dark:#111;
+      --muted:#f5f5f7;
+      --card-shadow: 0 6px 18px rgba(13,13,13,0.08);
+      --radius:12px;
+      --max-width:1200px;
+      --gap:20px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:#222;
+      background:white;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:30px 16px;
+    }
+
+    /* Header */
+    header{
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 16px;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+    .logo{
+      font-weight:700;
+      letter-spacing:1px;
+      color:var(--dark);
+    }
+    nav{display:flex; gap:14px; align-items:center;}
+    nav a{color:#444; text-decoration:none; font-size:14px}
+    .search{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .search input{padding:8px 10px;border-radius:20px;border:1px solid #e6e6e6;min-width:180px}
+
+    /* Hero carousel */
+    .hero{
+      margin-top:18px;
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+    }
+    .slides{
+      display:flex;
+      width:300%;
+      transition:transform 0.6s cubic-bezier(.2,.9,.3,1);
+    }
+    .slide{
+      width:100%;
+      flex:0 0 100%;
+      min-height:320px;
+      display:grid;
+      align-items:center;
+      background-size:cover;
+      background-position:center;
+      color:white;
+      position:relative;
+    }
+    .slide::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.45));
+      border-radius:var(--radius);
+    }
+    .slide-content{
+      position:relative;
+      padding:32px;
+      z-index:2;
+      max-width:700px;
+    }
+    .slide h2{margin:0 0 8px;font-size:26px}
+    .slide p{margin:0;color:rgba(255,255,255,0.9)}
+
+    .hero-controls{
+      position:absolute;
+      bottom:12px;
+      right:18px;
+      z-index:3;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;
+    }
+    .dot.active{background:var(--purple);}
+
+    /* Products */
+    .section{
+      padding:32px 0;
+    }
+    .section h3{
+      margin:0 0 18px;
+      font-size:20px;
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:var(--gap);
+    }
+    .card{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--card-shadow);
+      display:flex;
+      flex-direction:column;
+    }
+    .card img{width:100%;height:200px;object-fit:cover}
+    .card-body{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:8px}
+    .price{font-weight:700;color:var(--purple)}
+    .btn{
+      padding:10px 12px;
+      border-radius:10px;
+      border:none;
+      background:var(--purple);
+      color:white;
+      cursor:pointer;
+      text-align:center;
+      font-weight:600;
+    }
+    .tags{display:flex;gap:6px;font-size:12px;color:#777}
+
+    /* Collections */
+    .collections{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:var(--gap);
+      margin-top:16px;
+    }
+    .collection{
+      height:200px;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--card-shadow);
+    }
+    .collection::after{
+      content:"";
+      position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.55));
+    }
+    .collection .info{position:relative;color:white;padding:18px;z-index:2}
+
+    /* Purple band */
+    .purple-band{
+      background:var(--purple);
+      color:white;
+      padding:18px 16px;
+      margin-top:22px;
+      text-align:center;
+      border-radius:6px;
+    }
+
+    /* Features */
+    .features{display:flex;gap:24px;justify-content:center;margin-top:18px}
+    .feature{display:flex;flex-direction:column;align-items:center;font-size:14px;color:#444}
+    .feature .icon{width:48px;height:48px;border-radius:50%;background:#111;color:white;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+
+    /* Footer */
+    footer{
+      margin-top:38px;
+      background:#0b0b0b;
+      color:#ddd;
+      padding:34px 16px;
+    }
+    .footer-grid{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:24px;
+    }
+    .footer-grid h4{color:#fff;margin:0 0 10px;font-size:14px}
+    .footer-grid a{color:#bbb;text-decoration:none;font-size:14px;display:block;margin:6px 0}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .products{grid-template-columns:repeat(2,1fr)}
+      .collections{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:600px){
+      .topbar{padding:10px}
+      .products{grid-template-columns:1fr}
+      .search input{display:none}
+      .slide{min-height:220px}
+      .hero{border-radius:8px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="logo">SPRINT WAER</div>
+        <nav>
+          <a href="#">Novidades</a>
+          <a href="#">Masculino</a>
+          <a href="#">Feminino</a>
+          <a href="#">Coleções</a>
+        </nav>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="search">
+          <input type="text" placeholder="Buscar produtos..." aria-label="buscar">
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a href="#" style="text-decoration:none;color:#444;font-weight:600">Login</a>
+          <a href="#" style="text-decoration:none;color:#444">Carrinho</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO / BANNER CAROUSEL -->
+    <section class="hero" aria-label="banner principal">
+      <div class="slides" id="slides">
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+1');">
+          <div class="slide-content">
+            <h2>Nike Phantom 2018</h2>
+            <p>Design e tecnologia de ponta para seu melhor desempenho.</p>
+          </div>
+        </div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+2');">
+          <div class="slide-content">
+            <h2>Coleção Outono 2025</h2>
+            <p>Peças inspiradas na temporada - edição limitada</p>
+          </div>
+        </div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+3');">
+          <div class="slide-content">
+            <h2>Pro Challenge</h2>
+            <p>Alta performance para atletas profissionais.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-controls" id="dots"></div>
+    </section>
+
+    <!-- Produtos em destaque -->
+    <section class="section" aria-label="Produtos em destaque">
+      <h3>Produtos em Destaque</h3>
+      <div class="products">
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400?text=Produto+1" alt="Produto 1">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:700">Nike Mercurial Vapor 15 Elite</div>
+                <div class="tags">Futebol • Indoor</div>
+              </div>
+              <div class="price">R$1.299,90</div>
+            </div>
+            <p style="margin-top:auto;font-size:13px;color:#666">Entrega rápida e garantia de fábrica.</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn">Comprar</button>
+              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400?text=Produto+2" alt="Produto 2">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:700">Umbro Tocco Elite</div>
+                <div class="tags">Futebol • Campo</div>
+              </div>
+              <div class="price">R$649,90</div>
+            </div>
+            <p style="margin-top:auto;font-size:13px;color:#666">Melhor custo-benefício para treino intenso.</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn">Comprar</button>
+              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400?text=Produto+3" alt="Produto 3">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:700">Puma Ultra Ultimate</div>
+                <div class="tags">Futebol • Campo</div>
+              </div>
+              <div class="price">R$849,90</div>
+            </div>
+            <p style="margin-top:auto;font-size:13px;color:#666">Leveza e estabilidade para jogos intensos.</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn">Comprar</button>
+              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Coleções especiais -->
+    <section class="section" aria-label="Coleções especiais">
+      <h3>Coleções Especiais</h3>
+      <div class="collections">
+        <div class="collection" style="background-image:url('https://via.placeholder.com/800x600?text=Colecao+1');">
+          <div class="info">
+            <strong>Coleção Outono 2025</strong>
+            <div>Peças inspiradas na temporada</div>
+          </div>
+        </div>
+        <div class="collection" style="background-image:url('https://via.placeholder.com/800x600?text=Colecao+2');">
+          <div class="info">
+            <strong>Pro Challenge</strong>
+            <div>Alta performance para atletas profissionais</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banda Purple -->
+    <div class="purple-band" role="region" aria-label="promocao">
+      <strong>Lançamentos 2025:</strong> Cadastre-se e receba novidades, lançamentos e ofertas especiais.
+    </div>
+
+    <!-- Features -->
+    <div class="features" aria-hidden="false">
+      <div class="feature">
+        <div class="icon">✓</div>
+        <div>Qualidade Garantida</div>
+      </div>
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <div>Entrega Rápida</div>
+      </div>
+      <div class="feature">
+        <div class="icon">↺</div>
+        <div>Troca Fácil</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>SPRINT WAER</h4>
+        <p style="color:#bbb;font-size:13px;margin-top:6px">Marca esportiva focada em artigos de qualidade e tecnologia para alto desempenho.</p>
+      </div>
+
+      <div>
+        <h4>Ajuda</h4>
+        <a href="#">Central de Ajuda</a>
+        <a href="#">Prazos de Entrega</a>
+        <a href="#">Trocas e Devoluções</a>
+      </div>
+
+      <div>
+        <h4>Newsletter</h4>
+        <p style="color:#bbb;font-size:13px;margin-bottom:8px">Receba ofertas e novidades</p>
+        <form onsubmit="event.preventDefault(); alert('Obrigado pelo cadastro!');">
+          <input type="email" placeholder="seu@email.com" style="padding:10px;border-radius:6px;border:1px solid #333;background:#0b0b0b;color:#fff;width:100%;margin-bottom:8px">
+          <button class="btn" style="width:100%">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hero carousel simples
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const dotsEl = document.getElementById('dots');
+      const total = slidesEl.children.length;
+      let idx = 0;
+      let interval = null;
+
+      function createDots(){
+        for(let i=0;i<total;i++){
+          const d = document.createElement('div');
+          d.className = 'dot' + (i===0 ? ' active' : '');
+          d.dataset.index = i;
+          d.addEventListener('click', ()=> goTo(i));
+          dotsEl.appendChild(d);
+        }
+      }
+
+      function update(){
+        slidesEl.style.transform = `translateX(-${idx * 100}%)`;
+        Array.from(dotsEl.children).forEach((dot,i)=>{
+          dot.classList.toggle('active', i===idx);
+        });
+      }
+
+      function next(){
+        idx = (idx + 1) % total;
+        update();
+      }
+      function goTo(i){
+        idx = i % total;
+        update();
+        resetInterval();
+      }
+      function resetInterval(){
+        if(interval) clearInterval(interval);
+        interval = setInterval(next, 4500);
+      }
+
+      createDots();
+      resetInterval();
+
+      // Pause on hover
+      const hero = document.querySelector('.hero');
+      hero.addEventListener('mouseenter', ()=> clearInterval(interval));
+      hero.addEventListener('mouseleave', ()=> resetInterval());
+
+      // Accessibility: keyboard left/right
+      window.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft'){ idx = (idx - 1 + total) % total; update(); resetInterval();}
+        if(e.key === 'ArrowRight'){ idx = (idx + 1) % total; update(); resetInterval();}
+      });
+    })();
+
+    // Simples handlers para botões de "Comprar"
+    document.querySelectorAll('.btn').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        if(btn.innerText.trim().toLowerCase() === 'comprar'){
+          alert('Produto adicionado ao carrinho (simulação).');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
