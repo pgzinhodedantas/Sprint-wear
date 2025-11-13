@@ -1,229 +1,449 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sprint Waer — Mockup</title>
+  <title>Sprint Wear — Mockup</title>
   <style>
-    :root{
-      --purple:#8a1bd6;
-      --dark:#111;
-      --muted:#f5f5f7;
-      --card-shadow: 0 6px 18px rgba(13,13,13,0.08);
-      --radius:12px;
-      --max-width:1200px;
-      --gap:20px;
+    :root {
+      --purple: #8a1bd6;
+      --dark: #111;
+      --muted: #f5f5f7;
+      --card-shadow: 0 6px 18px rgba(13, 13, 13, 0.08);
+      --radius: 12px;
+      --max-width: 1200px;
+      --gap: 20px;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      color:#222;
-      background:white;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      color: #222;
+      background: white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* Container */
-    .wrap{
-      max-width:var(--max-width);
-      margin:0 auto;
-      padding:30px 16px;
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 30px 16px;
     }
 
     /* Header */
-    header{
-      background:#fff;
-      border-bottom:1px solid rgba(0,0,0,0.04);
-      position:sticky;
-      top:0;
-      z-index:50;
+    header {
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:10px 16px;
-      max-width:var(--max-width);
-      margin:0 auto;
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
-    .logo{
-      font-weight:700;
-      letter-spacing:1px;
-      color:var(--dark);
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--dark);
     }
-    nav{display:flex; gap:14px; align-items:center;}
-    nav a{color:#444; text-decoration:none; font-size:14px}
-    .search{
-      display:flex;
-      align-items:center;
-      gap:8px;
+
+    nav {
+      display: flex;
+      gap: 14px;
+      align-items: center;
     }
-    .search input{padding:8px 10px;border-radius:20px;border:1px solid #e6e6e6;min-width:180px}
+
+    nav a {
+      color: #444;
+      text-decoration: none;
+      font-size: 14px
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search input {
+      padding: 8px 10px;
+      border-radius: 20px;
+      border: 1px solid #e6e6e6;
+      min-width: 180px
+    }
 
     /* Hero carousel */
-    .hero{
-      margin-top:18px;
-      position:relative;
-      overflow:hidden;
-      border-radius:var(--radius);
-      box-shadow:var(--card-shadow);
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      margin-bottom: 24px;
     }
-    .slides{
-      display:flex;
-      width:300%;
-      transition:transform 0.6s cubic-bezier(.2,.9,.3,1);
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(.2,.9,.3,1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .slide{
-      width:100%;
-      flex:0 0 100%;
-      min-height:320px;
-      display:grid;
-      align-items:center;
-      background-size:cover;
-      background-position:center;
-      color:white;
-      position:relative;
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 2;
     }
-    .slide::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.45));
-      border-radius:var(--radius);
+    .hero-slide-content {
+      background: rgba(0,0,0,0.45);
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      max-width: 600px;
     }
-    .slide-content{
-      position:relative;
-      padding:32px;
-      z-index:2;
-      max-width:700px;
+    .hero-slide-content h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.4);
     }
-    .slide h2{margin:0 0 8px;font-size:26px}
-    .slide p{margin:0;color:rgba(255,255,255,0.9)}
-
-    .hero-controls{
-      position:absolute;
-      bottom:12px;
-      right:18px;
-      z-index:3;
-      display:flex;
-      gap:8px;
-      align-items:center;
+    .hero-slide-content p {
+      font-size: 1.2rem;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
     }
-    .dot{
-      width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;
+    .hero-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
     }
-    .dot.active{background:var(--purple);}
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .hero-dot.active {
+      background: var(--purple, #8a1bd6);
+    }
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.25);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .hero-arrow.left { left: 18px; }
+    .hero-arrow.right { right: 18px; }
+    .hero-arrow:hover { background: rgba(0,0,0,0.45); }
+    @media (max-width: 900px) {
+      .hero-carousel { height: 260px; }
+      .hero-slide-content h2 { font-size: 1.3rem; }
+      .hero-slide-content p { font-size: 0.9rem; }
+      .hero-slide-content { padding: 1.2rem 0.5rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-carousel { height: 180px; }
+      .hero-slide-content { padding: 0.7rem 0.2rem; }
+    }
 
     /* Products */
-    .section{
-      padding:32px 0;
+    .section {
+      padding: 32px 0;
     }
-    .section h3{
-      margin:0 0 18px;
-      font-size:20px;
+
+    .section h3 {
+      margin: 0 0 18px;
+      font-size: 20px;
     }
-    .products{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:var(--gap);
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
     }
-    .card{
-      background:white;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:var(--card-shadow);
-      display:flex;
-      flex-direction:column;
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
     }
-    .card img{width:100%;height:200px;object-fit:cover}
-    .card-body{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:8px}
-    .price{font-weight:700;color:var(--purple)}
-    .btn{
-      padding:10px 12px;
-      border-radius:10px;
-      border:none;
-      background:var(--purple);
-      color:white;
-      cursor:pointer;
-      text-align:center;
-      font-weight:600;
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover
     }
-    .tags{display:flex;gap:6px;font-size:12px;color:#777}
+
+    .card-body {
+      padding: 12px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--purple)
+    }
+
+    .btn {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      background: var(--purple);
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      font-size: 12px;
+      color: #777
+    }
 
     /* Collections */
-    .collections{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:var(--gap);
-      margin-top:16px;
+    .collections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      margin-top: 16px;
     }
-    .collection{
-      height:200px;
-      border-radius:12px;
-      overflow:hidden;
-      position:relative;
-      display:flex;
-      align-items:flex-end;
-      background-size:cover;
-      background-position:center;
-      box-shadow:var(--card-shadow);
+
+    .collection {
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--card-shadow);
     }
-    .collection::after{
-      content:"";
-      position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.55));
+
+    .collection::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55));
     }
-    .collection .info{position:relative;color:white;padding:18px;z-index:2}
+
+    .collection .info {
+      position: relative;
+      color: white;
+      padding: 18px;
+      z-index: 2
+    }
 
     /* Purple band */
-    .purple-band{
-      background:var(--purple);
-      color:white;
-      padding:18px 16px;
-      margin-top:22px;
-      text-align:center;
-      border-radius:6px;
+    .purple-band {
+      background: var(--purple);
+      color: white;
+      padding: 18px 16px;
+      margin-top: 22px;
+      text-align: center;
+      border-radius: 6px;
     }
 
     /* Features */
-    .features{display:flex;gap:24px;justify-content:center;margin-top:18px}
-    .feature{display:flex;flex-direction:column;align-items:center;font-size:14px;color:#444}
-    .feature .icon{width:48px;height:48px;border-radius:50%;background:#111;color:white;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+    .features {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 18px
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #444
+    }
+
+    .feature .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px
+    }
 
     /* Footer */
-    footer{
-      margin-top:38px;
-      background:#0b0b0b;
-      color:#ddd;
-      padding:34px 16px;
+    footer {
+      margin-top: 38px;
+      background: #0b0b0b;
+      color: #ddd;
+      padding: 34px 16px;
     }
-    .footer-grid{
-      max-width:var(--max-width);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:24px;
+
+    .footer-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
     }
-    .footer-grid h4{color:#fff;margin:0 0 10px;font-size:14px}
-    .footer-grid a{color:#bbb;text-decoration:none;font-size:14px;display:block;margin:6px 0}
+
+    .footer-grid h4 {
+      color: #fff;
+      margin: 0 0 10px;
+      font-size: 14px
+    }
+
+    .footer-grid a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin: 6px 0
+    }
 
     /* Responsive */
-    @media (max-width:900px){
-      .products{grid-template-columns:repeat(2,1fr)}
-      .collections{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr 1fr}
+    @media (max-width:900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .collections {
+        grid-template-columns: 1fr
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
     }
-    @media (max-width:600px){
-      .topbar{padding:10px}
-      .products{grid-template-columns:1fr}
-      .search input{display:none}
-      .slide{min-height:220px}
-      .hero{border-radius:8px}
+
+    @media (max-width:600px) {
+      .topbar {
+        padding: 10px
+      }
+
+      .products {
+        grid-template-columns: 1fr
+      }
+
+      .search input {
+        display: none
+      }
+    }
+
+    .login-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-modal-content {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 32px 28px 24px 28px;
+      min-width: 320px;
+      max-width: 90vw;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: loginFadeIn 0.3s;
+    }
+    @keyframes loginFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .login-modal-content h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.6rem;
+      text-align: center;
+      color: var(--purple);
+    }
+    .login-modal-content label {
+      font-size: 1rem;
+      color: #222;
+      margin-bottom: 4px;
+    }
+    .login-modal-content input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .login-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #888;
+      cursor: pointer;
+    }
+    .login-close:hover {
+      color: var(--purple);
+    }
+    @media (max-width:600px) {
+      .login-modal-content { padding: 18px 8px; min-width: 0; }
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -254,36 +474,93 @@
 
     <!-- HERO / BANNER CAROUSEL -->
     <section class="hero" aria-label="banner principal">
-      <div class="slides" id="slides">
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+1');">
-          <div class="slide-content">
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero-slide active" style="background-image:url('bannerTESTE.jpg');">
+          <div class="hero-slide-content">
             <h2>Nike Phantom 2018</h2>
             <p>Design e tecnologia de ponta para seu melhor desempenho.</p>
           </div>
         </div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+2');">
-          <div class="slide-content">
+        <div class="hero-slide" style="background-image:url('https://cdn-umbroglobal-media.azureedge.net/vhaow4pm/untitled-1.png?anchor=center&mode=crop&width=1600&height=1100');">
+          <div class="hero-slide-content">
             <h2>Coleção Outono 2025</h2>
             <p>Peças inspiradas na temporada - edição limitada</p>
           </div>
         </div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x420?text=Banner+3');">
-          <div class="slide-content">
+        <div class="hero-slide" style="background-image:url('https://forbes.com.br/wp-content/uploads/2024/02/Forbes_Usain-Bolt.jpg');">
+          <div class="hero-slide-content">
             <h2>Pro Challenge</h2>
             <p>Alta performance para atletas profissionais.</p>
           </div>
         </div>
+        <div class="hero-dots" id="heroDots"></div>
+        <button class="hero-arrow left" id="heroPrev" aria-label="Anterior">&#10094;</button>
+        <button class="hero-arrow right" id="heroNext" aria-label="Próximo">&#10095;</button>
       </div>
-
-      <div class="hero-controls" id="dots"></div>
     </section>
+
+    <script>
+    // Novo carrossel responsivo
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dotsContainer = document.getElementById('heroDots');
+      const prevBtn = document.getElementById('heroPrev');
+      const nextBtn = document.getElementById('heroNext');
+      let current = 0;
+      let interval;
+
+      function showSlide(idx) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === idx);
+        });
+        Array.from(dotsContainer.children).forEach((dot, i) => {
+          dot.classList.toggle('active', i === idx);
+        });
+        current = idx;
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+      function prevSlide() {
+        showSlide((current - 1 + slides.length) % slides.length);
+      }
+      function goTo(idx) {
+        showSlide(idx);
+        resetInterval();
+      }
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 5000);
+      }
+
+      // Dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+      nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+
+      resetInterval();
+      showSlide(0);
+
+      // Pause on hover
+      const carousel = document.getElementById('heroCarousel');
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', resetInterval);
+    })();
+    </script>
 
     <!-- Produtos em destaque -->
     <section class="section" aria-label="Produtos em destaque">
       <h3>Produtos em Destaque</h3>
       <div class="products">
-        <article class="card">
-          <img src="https://via.placeholder.com/600x400?text=Produto+1" alt="Produto 1">
+        <article class="card" data-id="1">
+          <img src="https://imgcentauro-a.akamaihd.net/1200x1200/M124W507A10.jpg" alt="Produto 1">
           <div class="card-body">
             <div style="display:flex;justify-content:space-between;align-items:center">
               <div>
@@ -294,14 +571,17 @@
             </div>
             <p style="margin-top:auto;font-size:13px;color:#666">Entrega rápida e garantia de fábrica.</p>
             <div style="margin-top:8px;display:flex;gap:8px">
-              <button class="btn">Comprar</button>
-              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+              <button class="btn add-cart-btn" data-id="1">Adicionar ao carrinho</button>
+              <button
+                style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
             </div>
           </div>
         </article>
 
-        <article class="card">
-          <img src="https://via.placeholder.com/600x400?text=Produto+2" alt="Produto 2">
+        <article class="card" data-id="2">
+          <img
+            src="https://sportime.cdn.magazord.com.br/img/2023/12/produto/46215/chuteira-umbro-tocco-iii-club-campo-azul-10539-3-b3d43cd1a79448a119e5131c8a85b9bb.jpg?ims=fit-in/600x600/filters:fill(white)"
+            alt="Produto 2">
           <div class="card-body">
             <div style="display:flex;justify-content:space-between;align-items:center">
               <div>
@@ -312,14 +592,15 @@
             </div>
             <p style="margin-top:auto;font-size:13px;color:#666">Melhor custo-benefício para treino intenso.</p>
             <div style="margin-top:8px;display:flex;gap:8px">
-              <button class="btn">Comprar</button>
-              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+              <button class="btn add-cart-btn" data-id="2">Adicionar ao carrinho</button>
+              <button
+                style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
             </div>
           </div>
         </article>
 
-        <article class="card">
-          <img src="https://via.placeholder.com/600x400?text=Produto+3" alt="Produto 3">
+        <article class="card" data-id="3">
+          <img src="https://m.media-amazon.com/images/I/31V6xpcTpiL._SY900_.jpg" alt="Produto 3">
           <div class="card-body">
             <div style="display:flex;justify-content:space-between;align-items:center">
               <div>
@@ -330,8 +611,9 @@
             </div>
             <p style="margin-top:auto;font-size:13px;color:#666">Leveza e estabilidade para jogos intensos.</p>
             <div style="margin-top:8px;display:flex;gap:8px">
-              <button class="btn">Comprar</button>
-              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
+              <button class="btn add-cart-btn" data-id="3">Adicionar ao carrinho</button>
+              <button
+                style="padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:#fff;cursor:pointer">Ver</button>
             </div>
           </div>
         </article>
@@ -342,13 +624,13 @@
     <section class="section" aria-label="Coleções especiais">
       <h3>Coleções Especiais</h3>
       <div class="collections">
-        <div class="collection" style="background-image:url('https://via.placeholder.com/800x600?text=Colecao+1');">
+        <div class="collection" style="background-image:url('https://cdn-umbroglobal-media.azureedge.net/vhaow4pm/untitled-1.png?anchor=center&mode=crop&width=1600&height=1100');">
           <div class="info">
             <strong>Coleção Outono 2025</strong>
             <div>Peças inspiradas na temporada</div>
           </div>
         </div>
-        <div class="collection" style="background-image:url('https://via.placeholder.com/800x600?text=Colecao+2');">
+        <div class="collection" style="background-image:url('Forbes_Usain-Bolt.jpg');">
           <div class="info">
             <strong>Pro Challenge</strong>
             <div>Alta performance para atletas profissionais</div>
@@ -383,8 +665,9 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <h4>SPRINT WAER</h4>
-        <p style="color:#bbb;font-size:13px;margin-top:6px">Marca esportiva focada em artigos de qualidade e tecnologia para alto desempenho.</p>
+        <h4>SPRINT WEAR</h4>
+        <p style="color:#bbb;font-size:13px;margin-top:6px">Marca esportiva focada em artigos de qualidade e tecnologia
+          para alto desempenho.</p>
       </div>
 
       <div>
@@ -398,76 +681,214 @@
         <h4>Newsletter</h4>
         <p style="color:#bbb;font-size:13px;margin-bottom:8px">Receba ofertas e novidades</p>
         <form onsubmit="event.preventDefault(); alert('Obrigado pelo cadastro!');">
-          <input type="email" placeholder="seu@email.com" style="padding:10px;border-radius:6px;border:1px solid #333;background:#0b0b0b;color:#fff;width:100%;margin-bottom:8px">
+          <input type="email" placeholder="seu@email.com"
+            style="padding:10px;border-radius:6px;border:1px solid #333;background:#0b0b0b;color:#fff;width:100%;margin-bottom:8px">
           <button class="btn" style="width:100%">Cadastrar</button>
         </form>
       </div>
     </div>
   </footer>
 
+  <!-- Modal de Login -->
+  <div id="loginModal" class="login-modal" style="display:none">
+    <div class="login-modal-content">
+      <button class="login-close" id="loginClose" aria-label="Fechar">&times;</button>
+      <h2>Entrar</h2>
+      <form id="loginForm" autocomplete="off">
+        <label for="loginEmail">E-mail</label>
+        <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+        <label for="loginSenha">Senha</label>
+        <input type="password" id="loginSenha" placeholder="Sua senha" required>
+        <button type="submit" class="btn" style="width:100%;margin-top:18px">Entrar</button>
+      </form>
+      <button class="btn" id="loginBack" style="width:100%;margin-top:12px;background:#bbb;color:#222">Voltar para página inicial</button>
+    </div>
+  </div>
+
+  <!-- Carrinho Modal -->
+  <div id="cartModal" class="login-modal" style="display:none">
+    <div class="login-modal-content">
+      <button class="login-close" id="cartClose" aria-label="Fechar">&times;</button>
+      <h2>Meu Carrinho</h2>
+      <div id="cartItems"></div>
+      <div id="cartTotal" style="margin-top:24px;font-size:1.1rem;font-weight:700;text-align:right;color:var(--purple)"></div>
+      <button class="btn" id="cartBack" style="width:100%;margin-top:18px;background:#bbb;color:#222">Voltar para página inicial</button>
+    </div>
+  </div>
+
   <script>
-    // Hero carousel simples
-    (function(){
-      const slidesEl = document.getElementById('slides');
-      const dotsEl = document.getElementById('dots');
-      const total = slidesEl.children.length;
-      let idx = 0;
-      let interval = null;
-
-      function createDots(){
-        for(let i=0;i<total;i++){
-          const d = document.createElement('div');
-          d.className = 'dot' + (i===0 ? ' active' : '');
-          d.dataset.index = i;
-          d.addEventListener('click', ()=> goTo(i));
-          dotsEl.appendChild(d);
-        }
-      }
-
-      function update(){
-        slidesEl.style.transform = `translateX(-${idx * 100}%)`;
-        Array.from(dotsEl.children).forEach((dot,i)=>{
-          dot.classList.toggle('active', i===idx);
-        });
-      }
-
-      function next(){
-        idx = (idx + 1) % total;
-        update();
-      }
-      function goTo(i){
-        idx = i % total;
-        update();
-        resetInterval();
-      }
-      function resetInterval(){
-        if(interval) clearInterval(interval);
-        interval = setInterval(next, 4500);
-      }
-
-      createDots();
-      resetInterval();
-
-      // Pause on hover
-      const hero = document.querySelector('.hero');
-      hero.addEventListener('mouseenter', ()=> clearInterval(interval));
-      hero.addEventListener('mouseleave', ()=> resetInterval());
-
-      // Accessibility: keyboard left/right
-      window.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowLeft'){ idx = (idx - 1 + total) % total; update(); resetInterval();}
-        if(e.key === 'ArrowRight'){ idx = (idx + 1) % total; update(); resetInterval();}
-      });
-    })();
-
     // Simples handlers para botões de "Comprar"
-    document.querySelectorAll('.btn').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        if(btn.innerText.trim().toLowerCase() === 'comprar'){
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (btn.innerText.trim().toLowerCase() === 'comprar') {
           alert('Produto adicionado ao carrinho (simulação).');
         }
       });
     });
+
+    // Abrir modal ao clicar em Login
+    const loginBtn = Array.from(document.querySelectorAll('.topbar a')).find(a => a.textContent.trim().toLowerCase() === 'login');
+    const loginModal = document.getElementById('loginModal');
+    const loginClose = document.getElementById('loginClose');
+    const loginBack = document.getElementById('loginBack');
+
+    if (loginBtn && loginModal) {
+      loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    }
+    if (loginClose) {
+      loginClose.addEventListener('click', function() {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+    if (loginBack) {
+      loginBack.addEventListener('click', function() {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+    // Fechar modal ao clicar fora do conteúdo
+    if (loginModal) {
+      loginModal.addEventListener('click', function(e) {
+        if (e.target === loginModal) {
+          loginModal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    // Simulação de login
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Login fictício realizado!');
+        loginModal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Abrir modal ao clicar em Carrinho
+    const cartBtn = Array.from(document.querySelectorAll('.topbar a')).find(a => a.textContent.trim().toLowerCase() === 'carrinho');
+    const cartModal = document.getElementById('cartModal');
+    const cartClose = document.getElementById('cartClose');
+    const cartBack = document.getElementById('cartBack');
+
+    if (cartBtn && cartModal) {
+      cartBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        cartModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        atualizarModalCarrinho();
+      });
+    }
+    if (cartClose) {
+      cartClose.addEventListener('click', function() {
+        cartModal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+    if (cartBack) {
+      cartBack.addEventListener('click', function() {
+        cartModal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+    if (cartModal) {
+      cartModal.addEventListener('click', function(e) {
+        if (e.target === cartModal) {
+          cartModal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Dados dos produtos
+    const produtos = [
+      {
+        id: 1,
+        nome: 'Nike Mercurial Vapor 15 Elite',
+        categoria: 'Futebol • Indoor',
+        preco: 1299.90,
+        img: 'https://imgcentauro-a.akamaihd.net/1200x1200/M124W507A10.jpg'
+      },
+      {
+        id: 2,
+        nome: 'Umbro Tocco Elite',
+        categoria: 'Futebol • Campo',
+        preco: 649.90,
+        img: 'https://sportime.cdn.magazord.com.br/img/2023/12/produto/46215/chuteira-umbro-tocco-iii-club-campo-azul-10539-3-b3d43cd1a79448a119e5131c8a85b9bb.jpg?ims=fit-in/600x600/filters:fill(white)'
+      },
+      {
+        id: 3,
+        nome: 'Puma Ultra Ultimate',
+        categoria: 'Futebol • Campo',
+        preco: 849.90,
+        img: 'https://m.media-amazon.com/images/I/31V6xpcTpiL._SY900_.jpg'
+      }
+    ];
+
+    let carrinho = [];
+
+    // Botão adicionar/remover do carrinho
+    function atualizarBotoesCarrinho() {
+      document.querySelectorAll('.add-cart-btn').forEach(btn => {
+        const id = Number(btn.dataset.id);
+        if (carrinho.includes(id)) {
+          btn.textContent = 'Remover do carrinho';
+          btn.classList.add('removing');
+        } else {
+          btn.textContent = 'Adicionar ao carrinho';
+          btn.classList.remove('removing');
+        }
+      });
+    }
+
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const id = Number(this.dataset.id);
+        if (carrinho.includes(id)) {
+          carrinho = carrinho.filter(pid => pid !== id);
+        } else {
+          carrinho.push(id);
+        }
+        atualizarBotoesCarrinho();
+        atualizarModalCarrinho();
+      });
+    });
+
+    function atualizarModalCarrinho() {
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+      cartItems.innerHTML = '';
+      let total = 0;
+      carrinho.forEach(id => {
+        const p = produtos.find(prod => prod.id === id);
+        if (p) {
+          total += p.preco;
+          const item = document.createElement('div');
+          item.className = 'cart-item';
+          item.style.marginTop = '18px';
+          item.innerHTML = `
+            <img src="${p.img}" alt="${p.nome}" style="width:60px;height:60px;border-radius:8px;margin-right:12px;object-fit:cover">
+            <div>
+              <div style="font-weight:700">${p.nome}</div>
+              <div style="font-size:13px;color:#666">${p.categoria}</div>
+              <div style="color:var(--purple);font-weight:700">R$${p.preco.toFixed(2).replace('.', ',')}</div>
+            </div>
+          `;
+          cartItems.appendChild(item);
+        }
+      });
+      cartTotal.textContent = carrinho.length ? `Total: R$${total.toFixed(2).replace('.', ',')}` : '';
+      if (!carrinho.length) {
+        cartItems.innerHTML = '<div style="text-align:center;color:#888;margin:32px 0">Seu carrinho está vazio.</div>';
+      }
+    }
   </script>
 </body>
+
 </html>
