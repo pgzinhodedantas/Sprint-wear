@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos Con.Viver | Redes de Apoio</title>
+    <link rel="stylesheet" href="vamos-conviver.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ========== HEADER / NAVBAR ========== -->
+    <header class="header">
+        <div class="container header-content">
+          <div class="logo">
+              <img src="C:\Users\a95737957\Documents\VAMOS-Conviver\vamos-conviver.png" alt="Vamos Con.Viver" class="logo-img" onerror="this.style.display='none'">
+              <span class="logo-text">Vamos <span>ConViver</span></span>
+          </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link active">Início</a></li>
+                    <li><a href="#redes" class="nav-link">Redes de Apoio</a></li>
+                    <li><a href="#pedir-ajuda" class="nav-link">Pedir Ajuda</a></li>
+                    <li><a href="#escutar" class="nav-link">Escutar</a></li>
+                  
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="inicio" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text fade-in">
+                <p class="hero-subtitle">Projeto • Grupo 4</p>
+                <h1>Redes de <span>Apoio</span></h1>
+                <p class="hero-description">
+                    Ninguém precisa enfrentar dificuldades sozinho.  
+                    Descobre as pessoas e os recursos que te podem ajudar a viver melhor.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#redes" class="btn btn-primary">Explorar Redes</a>
+                    <a href="#quiz" class="btn btn-secondary">Fazer o Quiz</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in delay-1">
+                <div class="hero-card">
+                    <div class="hero-card-icon">💛</div>
+                    <h3>Estás acompanhado</h3>
+                    <p>Amizade • Família • Escola</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- ========== REDES DE APOIO ========== -->
+    <section id="redes" class="section redes">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>As Nossas Redes de Apoio</h2>
+                <p>Clica em cada card para saberes mais</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 - Amizade -->
+                <article class="card fade-in" data-modal="amizade">
+                    <div class="card-icon">👥</div>
+                    <h3>Amizade</h3>
+                    <p>Os amigos são muitas vezes a primeira rede de apoio. Partilhar o que sentes com alguém de confiança alivia o peso.</p>
+                    <button class="card-btn">Saber mais →</button>
+                </article>
+
+                <!-- Card 2 - Família -->
+                <article class="card fade-in delay-1" data-modal="familia">
+                    <div class="card-icon">🏠</div>
+                    <h3>Família</h3>
+                    <p>A família pode ser um porto seguro. Mesmo quando é difícil falar, eles costumam querer ajudar.</p>
+                    <button class="card-btn">Saber mais →</button>
+                </article>
+
+                <!-- Card 3 - Professores -->
+                <article class="card fade-in delay-2" data-modal="professores">
+                    <div class="card-icon">📚</div>
+                    <h3>Professores</h3>
+                    <p>Os professores estão atentos e podem orientar-te ou encaminhar-te para quem te pode ajudar melhor.</p>
+                    <button class="card-btn">Saber mais →</button>
+                </article>
+
+                <!-- Card 4 - Profissionais da Escola -->
+                <article class="card fade-in delay-3" data-modal="profissionais">
+                    <div class="card-icon">🩺</div>
+                    <h3>Profissionais da Escola</h3>
+                    <p>Psicólogos, orientadores e outros profissionais estão preparados para te escutar e apoiar.</p>
+                    <button class="card-btn">Saber mais →</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUANDO E COMO PEDIR AJUDA ========== -->
+    <section id="pedir-ajuda" class="section pedir-ajuda">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Quando e Como Pedir Ajuda</h2>
+                <p>Pedir ajuda é um sinal de coragem, não de fraqueza</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card fade-in">
+                    <div class="info-number">01</div>
+                    <h3>Reconhece os sinais</h3>
+                    <p>Tristeza persistente, ansiedade, dificuldades na escola, isolamento ou pensamentos negativos são sinais de que podes precisar de apoio.</p>
+                </div>
+                <div class="info-card fade-in delay-1">
+                    <div class="info-number">02</div>
+                    <h3>Escolhe a pessoa certa</h3>
+                    <p>Pensa em alguém em quem confias: um amigo, familiar, professor ou profissional da escola. Não precisas de contar tudo de uma vez.</p>
+                </div>
+                <div class="info-card fade-in delay-2">
+                    <div class="info-number">03</div>
+                    <h3>Usa palavras simples</h3>
+                    <p>“Preciso de falar contigo”, “Não estou a conseguir lidar com isto sozinho” ou “Podes ajudar-me?” já são ótimos começos.</p>
+                </div>
+                <div class="info-card fade-in delay-3">
+                    <div class="info-number">04</div>
+                    <h3>Não desistas</h3>
+                    <p>Se a primeira pessoa não conseguir ajudar, tenta outra. Existem várias redes e alguém vai conseguir ouvir-te.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ESCUTAR ALGUÉM ========== -->
+    <section id="escutar" class="section escutar">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Como Escutar Alguém</h2>
+                <p>Saber escutar também é uma forma poderosa de apoio</p>
+            </div>
+
+            <div class="escutar-content">
+                <div class="escutar-list fade-in">
+                    <div class="escutar-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h4>Estar presente</h4>
+                            <p>Guarda o telemóvel e presta atenção genuína.</p>
+                        </div>
+                    </div>
+                    <div class="escutar-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h4>Não interromper</h4>
+                            <p>Deixa a pessoa terminar o que tem para dizer.</p>
+                        </div>
+                    </div>
+                    <div class="escutar-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h4>Validar os sentimentos</h4>
+                            <p>“Isso parece muito difícil” ou “Faz sentido sentires-te assim”.</p>
+                        </div>
+                    </div>
+                    <div class="escutar-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h4>Evitar julgamentos</h4>
+                            <p>Não digas “não é nada” ou “já vai passar” sem escutar.</p>
+                        </div>
+                    </div>
+                    <div class="escutar-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h4>Perguntar como podes ajudar</h4>
+                            <p>“O que precisas de mim neste momento?”</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="escutar-visual fade-in delay-1">
+                    <div class="quote-box">
+                        <p>“Às vezes a melhor ajuda que podemos dar é simplesmente estar ali e escutar de verdade.”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BOTÃO FLUTUANTE ========== -->
+    <button class="fab" id="fabHelp" title="Preciso de Ajuda">
+        <span>💬</span>
+        <span class="fab-text">Preciso de Ajuda</span>
+    </button>
+
+    <!-- ========== MODAL ========== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Conteúdo preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL AJUDA RÁPIDA ========== -->
+    <div class="modal-overlay" id="helpModalOverlay">
+        <div class="modal help-modal">
+            <button class="modal-close" id="helpModalClose">×</button>
+            <div class="modal-content">
+                <h2>Precisas de falar com alguém?</h2>
+                <p>Aqui tens algumas formas de pedir ajuda:</p>
+                <ul class="help-list">
+                    <li><strong>Amigo ou familiar de confiança</strong> — começa por alguém próximo.</li>
+                    <li><strong>Professor ou diretor de turma</strong> — eles podem orientar-te.</li>
+                    <li><strong>Serviços de psicologia da escola</strong> — profissionais preparados para te escutar.</li>
+                    <li><strong>Linhas de apoio</strong> (exemplos):
+                        <ul>
+                            <li>SOS Voz Amiga: 213 544 545 / 912 802 669</li>
+                            <li>Conselho Nacional de Juventude / Linhas locais</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="help-note">Lembra-te: pedir ajuda é um ato de coragem.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="conviver.js"></script>
+</body>
+</html>
